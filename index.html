@@ -110,7 +110,7 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">OpenVox: Real-time Instance-level Open-vocabulary Probabilistic Voxel Representation</h1>
-          <h1 class="title is-4 publication-title">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2025</h1>
+          <h1 class="title is-4 publication-title"> IROS 2025 Under Review</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://bit-dyn.github.io/">Yinan Deng</a><sup>1</sup>,</span>
@@ -130,7 +130,7 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Beijing Institute of Technology</span>
           </div>
-          <div class="is-size-7 publication-authors">
+          <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>*</sup>Equal contribution</span>
           </div>
           <div class="column has-text-centered">
@@ -154,19 +154,9 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=BeUdxrjItDE"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/BIT-DYN/OpenObj"
+                <a href="https://github.com/BIT-DYN/OpenVox"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -194,7 +184,7 @@
       <h2 class="title is-3">Poster</h2>
       <img id="teaser" src="./static/images/poster.jpg" alt="teaser">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf"> OpenVox XXXX </span>
+        <span class="dnerf"> We introduce OpenVox, a framework of real-time instance-level open-vocabulary probabilistic voxel representation. </span>
       </h2>
     </div>
   </div>
@@ -208,11 +198,11 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p style="text-indent: 2em;">
-            The reconstruction and understanding of the surrounding environment is crucial for mobile robots to execute language-based human instructions. In recent years, open-vocabulary mapping enhanced by visual language models (VLMs) has become a common solution. While integrated object understanding helps mitigate semantic ambiguity in point-wise feature maps, efficiently obtaining inferential semantic understanding and robust incremental reconstruction at the instance-level  remains challenging.
+            The reconstruction and understanding of the surrounding environment is crucial for mobile robots to execute a wide range of human instructions. In recent years, open-vocabulary mapping enhanced by visual language models (VLMs) has become a common solution. While integrated object understanding helps mitigate semantic ambiguity in point-wise feature maps, efficiently obtaining rich semantic understanding and robust incremental reconstruction at the instance-level remains challenging.
 To address these challenges, we introduce OpenVox, a real-time incremental open-vocabulary instance-level probabilistic voxel representation.
-In the front-end, we design a fast instance segmentation and comprehension pipeline that enhance language reasoning through encoding caption.
-In the back-end, we design instance-level probabilistic voxels and model the cross-frame incremental fusion problem as two subtasks: Maximum Likelihood Estimation (MLE) for instance association and Maximum A Posteriori estimation (MAP) for map updating, ensuring robustness to sensor and segmentation noise.
-Results across multiple datasets show that OpenVox achieves superior performance in zero-shot instance segmentation, semantic segmentation, and open-vocabulary instance retrieval. Additionally, real-world robotics experiments confirm OpenVox's strong potential for stable, real-time operation.
+In the front-end, we design an efficient instance segmentation and comprehension pipeline that enhances language reasoning through encoding caption.
+In the back-end, we deploy instance-level probabilistic voxels and model the cross-frame incremental fusion problem as two subtasks: Maximum Likelihood Estimation (MLE) for instance association and Maximum A Posteriori estimation (MAP) for map updating, ensuring robustness to sensor or segmentation noise.
+Results across multiple datasets show that OpenVox achieves superior performance in zero-shot instance segmentation, semantic segmentation, and open-vocabulary retrieval. Additionally, real-world robotics experiment confirms OpenVox's strong potential for stable, real-time operation.
           </p>
         </div>
       </div>
@@ -232,10 +222,9 @@ Results across multiple datasets show that OpenVox achieves superior performance
       <h2 class="title is-3">Framework</h2>
       <div class="content has-text-justified">
         <p style="text-indent: 2em;">
-          In the frontend, the Instance Segmentation & Understanding module implements an efficient pipeline for instance-level semantic understanding, powered by caption encoding.
-          It processes RGB image frames to generate 2D instance segmentation masks and their corresponding semantic annotations. In the backend, we project the 2D masks onto a 3D map using probabilistic methods and perform probabilistic updates.
-          This process is modeled as two subtasks: instance association and map update. The first subtask involves associating instances from the observed masks and maps by solving the MLE problem, while the second subtask updates the instance voxel maps by solving the MAP problem.
-        </p>
+          In the front-end, the Instance Segmentation & Understanding module implements an efficient pipeline for instance-level semantic understanding, powered by caption encoding. It processes RGB image frames to generate 2D instance segmentation masks and their corresponding semantic annotations.
+          In the back-end, we project the 2D masks onto a 3D map and perform probabilistic updating. This process is modeled as two subtasks: instance association and map updating. The first subtask involves associating instances from the observed masks and maps by solving the maximum likelihood estimation (MLE) problem, while the second subtask updates the voxel instance vector by solving the maximum a posteriori (MAP) problem.
+          </p>
       </div>
       <img id="teaser" src="./static/images/framework.png" alt="teaser">
     </div>
@@ -444,8 +433,8 @@ Results across multiple datasets show that OpenVox achieves superior performance
         <h3 class="title is-4">Open-vocabulary Instance Retrieval</h3>
           <img id="teaser" src="./static/images/retrieval.png" alt="teaser">
           <h2 class="subtitle has-text-centered">
-            <span>Open-vocabulary Instance Retrieval</span>
           </h2>
+
         <br/>
         <!--/ Re-rendering. -->
         <!-- Re-rendering. -->
@@ -455,10 +444,14 @@ Results across multiple datasets show that OpenVox achieves superior performance
             <source src="./static/video/realWorld.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf"> OpenVox has the ability to run online in the real world.. </span>
+      </h2>
+
+          
+        <img id="teaser" src="./static/images/real_car.jpg" alt="teaser" width="600" >
         </div>
-        <h2 class="subtitle has-text-centered">
-          <span>Real-World Onboard Experiment</span>
-        </h2>
         
         
         
@@ -471,19 +464,6 @@ Results across multiple datasets show that OpenVox achieves superior performance
   </div>
 </section>
 
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{deng2024openobj,
-      title={OpenObj: Open-Vocabulary Object-Level Neural Radiance Fields with Fine-Grained Understanding}, 
-      author={Deng, Yinan and Wang, Jiahui and Zhao, Jingyu and Dou, Jianyu and Yang, Yi and Yue, Yufeng},
-      journal={arXiv preprint arXiv:2406.08009},
-      year={2024}
-    }</code></pre>
-  </div>
-</section>
 
 
 <footer class="footer">

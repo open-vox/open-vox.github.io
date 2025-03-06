@@ -137,7 +137,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2406.08009"
+                <a href="https://arxiv.org/pdf/2502.16528"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -146,7 +146,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2406.08009"
+                <a href="https://arxiv.org/abs/2502.16528"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -198,12 +198,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p style="text-indent: 2em;">
-            The reconstruction and understanding of the surrounding environment is crucial for mobile robots to execute a wide range of human instructions. In recent years, open-vocabulary mapping enhanced by visual language models (VLMs) has become a common solution. While integrated object understanding helps mitigate semantic ambiguity in point-wise feature maps, efficiently obtaining rich semantic understanding and robust incremental reconstruction at the instance-level remains challenging.
-To address these challenges, we introduce OpenVox, a real-time incremental open-vocabulary instance-level probabilistic voxel representation.
+            In recent years, vision-language models (VLMs) have advanced open-vocabulary mapping, enabling mobile robots to simultaneously achieve environmental reconstruction and high-level semantic understanding.
+While integrated object cognition helps mitigate semantic ambiguity in point-wise feature maps, efficiently obtaining rich semantic understanding and robust incremental reconstruction at the instance-level remains challenging.
+To address these challenges, we introduce OpenVox, a real-time incremental open-vocabulary probabilistic  instance voxel representation.
 In the front-end, we design an efficient instance segmentation and comprehension pipeline that enhances language reasoning through encoding caption.
-In the back-end, we deploy instance-level probabilistic voxels and model the cross-frame incremental fusion problem as two subtasks: Maximum Likelihood Estimation (MLE) for instance association and Maximum A Posteriori estimation (MAP) for map updating, ensuring robustness to sensor or segmentation noise.
-Results across multiple datasets show that OpenVox achieves superior performance in zero-shot instance segmentation, semantic segmentation, and open-vocabulary retrieval. Additionally, real-world robotics experiment confirms OpenVox's strong potential for stable, real-time operation.
-          </p>
+In the back-end, we implement probabilistic instance voxels and formalize the cross-frame incremental fusion process into two subtasks: instance association and live map evolution, ensuring robustness to sensor and segmentation noise. 
+Extensive evaluations across multiple datasets demonstrate that OpenVox achieves state-of-the-art performance in zero-shot instance segmentation, semantic segmentation, and open-vocabulary retrieval. Furthermore, real-world robotics experiments validate OpenVox's capability for stable, real-time operation.
+        </p>
         </div>
       </div>
     </div>
@@ -226,7 +227,7 @@ Results across multiple datasets show that OpenVox achieves superior performance
           In the back-end, we project the 2D masks onto a 3D map and perform probabilistic updating. This process is modeled as two subtasks: instance association and map updating. The first subtask involves associating instances from the observed masks and maps by solving the maximum likelihood estimation (MLE) problem, while the second subtask updates the voxel instance vector by solving the maximum a posteriori (MAP) problem.
           </p>
       </div>
-      <img id="teaser" src="./static/images/framework.png" alt="teaser">
+      <img id="teaser" src="./static/images/framework.jpg" alt="teaser">
     </div>
   </div>
 </section>
@@ -242,193 +243,224 @@ Results across multiple datasets show that OpenVox achieves superior performance
 
         <!-- Interpolating. -->
         <h3 class="title is-4">3D Zero-shot Instance Segmentation</h3>
-          <!-- <div class="large-8 columns"> -->
+
+        
+        <p class="caption selection" style="grid-column-start: 1; grid-column-end: 3;">
+          Visualisation of scene
+          <select id="instance-selector" class="instance_selector" style="padding: 2px; background:#f0f0f0; border:none; font-family: 'Noto Sans', sans-serif; font-size:16px;">
+                    <option value="room_1" selected>room_1</option>
+                    <option value="office_1">office_1</option>
+                    <option value="office_3">office_3</option>
+                    <option value="scene0220_02">scene0220_02</option>
+                    <option value="scene0592_01">scene0592_01</option>
+                    <option value="scene0696_02">scene0696_02</option>
+          </select>
+              obtaind by different methods.
+        </p>
+          
+
+        <br/>
+        <br/>
+        
+          
+        <div class="instance_id room_1">
           <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/3D_ins/ConceptGraphs_1.png" alt="ConceptGraphs"/>
-              <img src="./static/images/3D_ins/ours_1.png" alt="Ours"/>
+            <div class="twentytwenty-container twentytwenty-compare-2" style="width:35%">
+              <img src="./static/images/3D_ins/cg_room1.png" alt="ConceptGraphs"/>
+              <img src="./static/images/3D_ins/ours_room1.png" alt="Ours"/>
             </div>
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/3D_ins/ConceptGraphs_2.png" alt="ConceptGraphs"/>
-              <img src="./static/images/3D_ins/ours_2.png" alt="Ours"/>
+            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+              <img src="./static/images/3D_ins/rgb_room1.png" alt="RGB"/>
             </div>
+          </div>
+        </div>
+
+          <div class="instance_id office_1">
+          <div style="display: flex;">
+            <div class="twentytwenty-container twentytwenty-compare-2" style="width:35%">
+              <img src="./static/images/3D_ins/cg_office1.png" alt="ConceptGraphs"/>
+              <img src="./static/images/3D_ins/ours_office1.png" alt="Ours"/>
+            </div>
+            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+              <img src="./static/images/3D_ins/rgb_office1.png" alt="RGB"/>
+            </div>
+          </div>
+          </div>
+
+          
+          <div class="instance_id office_3">
+            <div style="display: flex;">
+              <div class="twentytwenty-container twentytwenty-compare-2" style="width:35%">
+                <img src="./static/images/3D_ins/cg_office3.png" alt="ConceptGraphs"/>
+                <img src="./static/images/3D_ins/ours_office3.png" alt="Ours"/>
+              </div>
+              <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+                <img src="./static/images/3D_ins/rgb_office3.png" alt="RGB"/>
+              </div>
+            </div>
+            </div>
+
             
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/3D_ins/rgb_1.png" alt="rgb"/>
+          <div class="instance_id scene0220_02">
+            <div style="display: flex;">
+              <div class="twentytwenty-container twentytwenty-compare-2" style="width:35%">
+                <img src="./static/images/3D_ins/cg_0220.png" alt="ConceptGraphs"/>
+                <img src="./static/images/3D_ins/ours_0220.png" alt="Ours"/>
+              </div>
+              <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+                <img src="./static/images/3D_ins/rgb_0220.png" alt="RGB"/>
+              </div>
             </div>
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/3D_ins/rgb_2.png" alt="rgb"/>
             </div>
-          </div>
+
+
+            
+          <div class="instance_id scene0592_01">
+            <div style="display: flex;">
+              <div class="twentytwenty-container twentytwenty-compare-2" style="width:35%">
+                <img src="./static/images/3D_ins/cg_0592.png" alt="ConceptGraphs"/>
+                <img src="./static/images/3D_ins/ours_0592.png" alt="Ours"/>
+              </div>
+              <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+                <img src="./static/images/3D_ins/rgb_0592.png" alt="RGB"/>
+              </div>
+            </div>
+            </div>
+
+
+            
+          <div class="instance_id scene0696_02">
+            <div style="display: flex;">
+              <div class="twentytwenty-container twentytwenty-compare-2" style="width:35%">
+                <img src="./static/images/3D_ins/cg_0696.png" alt="ConceptGraphs"/>
+                <img src="./static/images/3D_ins/ours_0696.png" alt="Ours"/>
+              </div>
+              <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+                <img src="./static/images/3D_ins/rgb_0696.png" alt="RGB"/>
+              </div>
+            </div>
+            </div>
+
+
+
           <div class="columns is-centered">
             <!-- Wheel -->
             <div class="column">
               <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Office-3</h2>
+                <h4 class="title is-6 has-text-centered">Segmentation</h4>
               </div>
             </div>
-      
             <!-- Wheel -->
             <div class="column">
               <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Scene_0696</h2>
-              </div>
-            </div>
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/3D_ins/ConceptGraphs_3.png" alt="ConceptGraphs"/>
-              <img src="./static/images/3D_ins/ours_3.png" alt="Ours"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/3D_ins/ConceptGraphs_4.png" alt="ConceptGraphs"/>
-              <img src="./static/images/3D_ins/ours_4.png" alt="Ours"/>
-            </div>
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/3D_ins/rgb_3.png" alt="rgb"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/3D_ins/rgb_4.png" alt="rgb"/>
-            </div>
-          </div>
-          <div class="columns is-centered">
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Scene_0592</h2>
-              </div>
-            </div>
-      
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Office-1</h2>
+                <h4 class="title is-6 has-text-centered">GT RGB</h4>
               </div>
             </div>
           </div>
 
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/3D_ins/ConceptGraphs_5.png" alt="ConceptGraphs"/>
-              <img src="./static/images/3D_ins/ours_5.png" alt="Ours"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/3D_ins/ConceptGraphs_6.png" alt="ConceptGraphs"/>
-              <img src="./static/images/3D_ins/ours_6.png" alt="Ours"/>
-            </div>
-            
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/3D_ins/rgb_5.png" alt="rgb"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/3D_ins/rgb_6.png" alt="rgb"/>
-            </div>
-          </div>
-          <div class="columns is-centered">
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Scene_0220</h2>
-              </div>
-            </div>
-      
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Room-1</h2>
-              </div>
-            </div>
-          </div>
+
         <br/>
         <!--/ Interpolating. -->
 
         <!-- Interpolating. -->
         <h3 class="title is-4">3D Zero-shot Semantic Segmentation</h3>
-          <!-- <div class="large-8 columns"> -->
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/ConceptFusion_office2.png" alt="ConceptFusion"/>
-              <img src="./static/images/2D_seg/ConceptGraphs_office2.png" alt="ConceptGraphs"/>
-              <img src="./static/images/2D_seg/Open-Fusion_office2.png" alt="Open-Fusion"/>
-              <img src="./static/images/2D_seg/ours_office2.png" alt="Ours"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/ConceptFusion_room0.png" alt="ConceptFusion"/>
-              <img src="./static/images/2D_seg/ConceptGraphs_room0.png" alt="ConceptGraphs"/>
-              <img src="./static/images/2D_seg/Open-Fusion_room0.png" alt="Open-Fusion"/>
-              <img src="./static/images/2D_seg/ours_room0.png" alt="Ours"/>
-            </div>
-            
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/rgb_office2.png" alt="rgb"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/rgb_room0.png" alt="rgb"/>
-            </div>
-          </div>
-          <div class="columns is-centered">
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Office-2</h2>
-              </div>
-            </div>
-      
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Room-0</h2>
-              </div>
-            </div>
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/ConceptFusion_0030.png" alt="ConceptFusion"/>
-              <img src="./static/images/2D_seg/ConceptGraphs_0030.png" alt="ConceptGraphs"/>
-              <img src="./static/images/2D_seg/Open-Fusion_0030.png" alt="Open-Fusion"/>
-              <img src="./static/images/2D_seg/ours_0030.png" alt="Ours"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
-              <img src="./static/images/2D_seg/ConceptFusion_0673.png" alt="ConceptFusion"/>
-              <img src="./static/images/2D_seg/ConceptGraphs_0673.png" alt="ConceptGraphs"/>
-              <img src="./static/images/2D_seg/Open-Fusion_0673.png" alt="Open-Fusion"/>
-              <img src="./static/images/2D_seg/ours_0673.png" alt="Ours"/>
-            </div>
-          </div>
-          <div style="display: flex;">
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/rgb_0030.png" alt="rgb"/>
-            </div>
-            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
-              <img src="./static/images/2D_seg/rgb_0673.png" alt="rgb"/>
-            </div>
-          </div>
-          <div class="columns is-centered">
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Scene_0030</h2>
-              </div>
-            </div>
-      
-            <!-- Wheel -->
-            <div class="column">
-              <div class="content" center="">
-                <h2 class="title is-5 has-text-centered">Scene_0673</h2>
-              </div>
-            </div>
-          </div>
-        <br/>
-        <!--/ Interpolating. -->
 
+        
+        <p class="caption selection" style="grid-column-start: 1; grid-column-end: 3;">
+          Visualisation of scene
+          <select id="semantic-selector" class="semantic_selector" style="padding: 2px; background:#f0f0f0; border:none; font-family: 'Noto Sans', sans-serif; font-size:16px;">
+                    <option value="room_0" selected>room_0</option>
+                    <option value="office_2">office_2</option>
+                    <option value="scene0030_02">scene0030_02</option>
+                    <option value="scene0673_04">scene0673_04</option>
+          </select>
+              obtaind by different methods.
+        </p>
+          
+
+        <br/>
+        <br/>
+
+        
+        <div class="semantic_id room_0">
+          <div style="display: flex;">
+            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
+              <img src="./static/images/3D_sem/ConceptFusion_room0.png" alt="ConceptFusion"/>
+              <img src="./static/images/3D_sem/ConceptGraphs_room0.png" alt="ConceptGraphs"/>
+              <img src="./static/images/3D_sem/Open-Fusion_room0.png" alt="Open-Fusion"/>
+              <img src="./static/images/3D_sem/ours_room0.png" alt="Ours"/>
+            </div>
+            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+              <img src="./static/images/3D_sem/rgb_room0.png" alt="RGB"/>
+            </div>
+          </div>
+        </div>
+
+        
+        
+        <div class="semantic_id office_2">
+          <div style="display: flex;">
+            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
+              <img src="./static/images/3D_sem/ConceptFusion_office2.png" alt="ConceptFusion"/>
+              <img src="./static/images/3D_sem/ConceptGraphs_office2.png" alt="ConceptGraphs"/>
+              <img src="./static/images/3D_sem/Open-Fusion_office2.png" alt="Open-Fusion"/>
+              <img src="./static/images/3D_sem/ours_office2.png" alt="Ours"/>
+            </div>
+            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+              <img src="./static/images/3D_sem/rgb_office2.png" alt="RGB"/>
+            </div>
+          </div>
+        </div>
+
+        
+        
+        <div class="semantic_id scene0030_02">
+          <div style="display: flex;">
+            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
+              <img src="./static/images/3D_sem/ConceptFusion_0030.png" alt="ConceptFusion"/>
+              <img src="./static/images/3D_sem/ConceptGraphs_0030.png" alt="ConceptGraphs"/>
+              <img src="./static/images/3D_sem/Open-Fusion_0030.png" alt="Open-Fusion"/>
+              <img src="./static/images/3D_sem/ours_0030.png" alt="Ours"/>
+            </div>
+            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+              <img src="./static/images/3D_sem/rgb_0030.png" alt="RGB"/>
+            </div>
+          </div>
+        </div>
+
+        
+        
+        <div class="semantic_id scene0673_04">
+          <div style="display: flex;">
+            <div class="twentytwenty-container twentytwenty-compare-4" style="width:35%">
+              <img src="./static/images/3D_sem/ConceptFusion_0673.png" alt="ConceptFusion"/>
+              <img src="./static/images/3D_sem/ConceptGraphs_0673.png" alt="ConceptGraphs"/>
+              <img src="./static/images/3D_sem/Open-Fusion_0673.png" alt="Open-Fusion"/>
+              <img src="./static/images/3D_sem/ours_0673.png" alt="Ours"/>
+            </div>
+            <div class="twentytwenty-container twentytwenty-compare-1" style="width:35%">
+              <img src="./static/images/3D_sem/rgb_0673.png" alt="RGB"/>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="columns is-centered">
+          <!-- Wheel -->
+          <div class="column">
+            <div class="content" center="">
+              <h4 class="title is-6 has-text-centered">Segmentation</h4>
+            </div>
+          </div>
+          <!-- Wheel -->
+          <div class="column">
+            <div class="content" center="">
+              <h4 class="title is-6 has-text-centered">GT RGB</h4>
+            </div>
+          </div>
+        </div>
+
+        <br/>
         <!-- Re-rendering. -->
         <h3 class="title is-4">Open-vocabulary Instance Retrieval</h3>
           <img id="teaser" src="./static/images/retrieval.png" alt="teaser">
